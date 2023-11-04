@@ -1,0 +1,9 @@
+name: "Lint Bash Scripts"
+description: "Standardize Bash Scripts with shfmt and shellcheck"
+
+runs:
+  using: "composite"
+  steps:
+      - name: Lint Bash Scripts
+        shell: bash
+        run: ./src/bash-linter.sh $GITHUB_WORKSPACE
