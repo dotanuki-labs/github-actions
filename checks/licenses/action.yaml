@@ -1,0 +1,19 @@
+name: "Lint documentation and find typos"
+description: "Standardize documentation and prose with different linters"
+
+inputs:
+  file-patterns:
+    description: “Patterns to look in source files, comma separated”
+    required: true
+
+  license:
+    description: “Open-source license to enforce”
+    default: "mit"
+    required: true
+
+runs:
+  using: "composite"
+  steps:
+      - name: Check licenses on source files
+        shell: bash
+        run: ./src/license-enforcer.sh $GITHUB_WORKSPACE ${{ inputs.file-patterns }} ${{ inputs.license }}
