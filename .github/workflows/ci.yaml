@@ -17,3 +17,7 @@ jobs:
       - name: Component tests for Bash Linter
         uses: ./checks/bash
 
+      - name: Component tests for license enforcer
+        uses: ./checks/licenses
+        with:
+          file-patterns: "*.sh"
