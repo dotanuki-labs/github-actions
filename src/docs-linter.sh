@@ -33,7 +33,10 @@ echo
 echo "🔥 Linting documentation and prose"
 echo
 
-require_docker
+require_docker_daemon
+require_docker_image "$markdownlint"
+require_docker_image "$lychee"
+
 lint_markdown
 check_broken_links
 
