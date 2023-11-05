@@ -40,7 +40,7 @@ report_missing_licenses() {
 }
 
 enforce_license_for_file_patterns() {
-    IFS=" " read -r -a files <<<"$(echo "$sources" | sed "s/,/[:space:]/g" | xargs)"
+    IFS=" " read -r -a files <<<"$(echo "$sources" | sed "s/,/ /g" | xargs)"
 
     for type in "${files[@]}"; do
         check_license_on_files "$type" || report_missing_licenses
