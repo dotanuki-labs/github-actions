@@ -11,7 +11,7 @@ current_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 source "$current_dir/lib/preconditions.sh"
 
 # https://github.com/google/addlicense
-readonly image="ghcr.io/google/addlicense"
+readonly addlicense="ghcr.io/google/addlicense"
 
 readonly target_folder="$1"
 readonly sources="$2"
@@ -22,7 +22,7 @@ check_license_on_files() {
 
     echo "→ Checking licenses for $extension files"
 
-    docker run --rm -v "${target_folder}:/src" "$image" \
+    docker run --rm -v "${target_folder}:/src" "$addlicense" \
         -c "Dotanuki Labs" \
         -l "$license" \
         -check $(find . -type f -name "$extension")
@@ -47,7 +47,8 @@ echo
 echo "🔥 Enforcing open-source license on source files"
 echo
 
-require_docker
+require_docker_daemon
+require_docker_image "$addlicense"
 enforce_license_for_file_patterns
 
 echo

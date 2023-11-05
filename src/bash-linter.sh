@@ -9,23 +9,36 @@ set -eo pipefail
 current_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 source "$current_dir/lib/preconditions.sh"
 
+# https://github.com/mvdan/sh
+readonly shmft="docker.io/mvdan/shfmt:latest"
+
+#https://github.com/koalaman/shellcheck
+readonly shellcheck="docker.io/koalaman/shellcheck-alpine:stable"
+
 readonly target_folder="$1"
-readonly docker_shmft="docker.io/mvdan/shfmt:latest"
-readonly docker_shellcheck="docker.io/koalaman/shellcheck-alpine:stable"
+
+check_code_style() {
+    echo "→ Checking code formatting (shfmt)"
+    docker run --rm -v "$target_folder:/mnt" -w /mnt "$shmft" --diff .
+}
+
+check_code_smells() {
+    echo "→ Checking code smells (shellcheck)"
+    local exec_cmd="find /mnt -name '*.sh' | xargs shellcheck"
+    docker run --rm -v "$target_folder:/mnt" "$shellcheck" sh -c "$exec_cmd"
+}
 
 echo
 echo "🔥 Linting Bash scripts"
 echo
 
-require_docker
-
-echo "→ Checking code formatting (shfmt)"
-docker run --rm -v "$target_folder:/mnt" -w /mnt "$docker_shmft" --diff .
+require_docker_daemon
+require_docker_image "$shmft"
+require_docker_image "$shellcheck"
 
 echo
-
-echo "→ Checking code smells (shellcheck)"
-docker run --rm -v "$target_folder:/mnt" "$docker_shellcheck" sh -c "find /mnt -name '*.sh' | xargs shellcheck"
+check_code_style
+check_code_smells
 
 echo
 echo "✅ All good!"
