@@ -1,0 +1,12 @@
+name: "docs-linter"
+description: "Standardize documentation and prose with different linters"
+
+runs:
+  using: "composite"
+  steps:
+      - name: Check typos everywhere
+        uses: crate-ci/typos@v1.16.22
+
+      - name: Lint documentation
+        shell: bash
+        run: ./src/docs-linter.sh $GITHUB_WORKSPACE

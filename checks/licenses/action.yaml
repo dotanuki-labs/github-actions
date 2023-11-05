@@ -1,5 +1,5 @@
-name: "Lint documentation and find typos"
-description: "Standardize documentation and prose with different linters"
+name: "license-enforcer"
+description: "Enforces open-source license in source files"
 
 inputs:
   file-patterns:

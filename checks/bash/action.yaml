@@ -1,4 +1,4 @@
-name: "Lint Bash Scripts"
+name: "bash-linter"
 description: "Standardize Bash Scripts with shfmt and shellcheck"
 
 runs:
