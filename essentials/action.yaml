@@ -19,12 +19,12 @@ runs:
 
       - name: Lint documentation
         shell: bash
-        run: ./src/docs-linter.sh $GITHUB_WORKSPACE
+        run: ${{ github.action_path }}/../src/docs-linter.sh $GITHUB_WORKSPACE
 
       - name: Lint Bash Scripts
         shell: bash
-        run: ./src/bash-linter.sh $GITHUB_WORKSPACE
+        run: ${{ github.action_path }}/../src/bash-linter.sh $GITHUB_WORKSPACE
 
       - name: Check licenses on source files
         shell: bash
-        run: ./src/license-enforcer.sh $GITHUB_WORKSPACE ${{ inputs.file-patterns }} ${{ inputs.license }}
+        run: ${{ github.action_path }}/../src/license-enforcer.sh $GITHUB_WORKSPACE ${{ inputs.file-patterns }} ${{ inputs.license }}
