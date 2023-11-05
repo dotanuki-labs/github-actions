@@ -2,9 +2,13 @@
 # Copyright 2023 Dotanuki Labs
 # SPDX-License-Identifier: MIT
 
+# shellcheck disable=SC1091
 # shellcheck disable=SC2046
 
 set -eo pipefail
+
+current_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+source "$current_dir/lib/preconditions.sh"
 
 # https://github.com/google/addlicense
 readonly image="ghcr.io/google/addlicense"
@@ -12,14 +16,6 @@ readonly image="ghcr.io/google/addlicense"
 readonly target_folder="$1"
 readonly sources="$2"
 readonly license="$3"
-
-require_docker() {
-    if (! docker stats --no-stream >/dev/null); then
-        echo "Docker is required for this check"
-        echo
-        exit 1
-    fi
-}
 
 check_license_on_files() {
     local extension="$1"

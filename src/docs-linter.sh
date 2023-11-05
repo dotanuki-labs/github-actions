@@ -2,7 +2,12 @@
 # Copyright 2023 Dotanuki Labs
 # SPDX-License-Identifier: MIT
 
+# shellcheck disable=SC1091
+
 set -eo pipefail
+
+current_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+source "$current_dir/lib/preconditions.sh"
 
 readonly target_folder="$1"
 
@@ -11,14 +16,6 @@ readonly markdownlint="ghcr.io/igorshubovych/markdownlint-cli:latest"
 
 # https://github.com/lycheeverse/lychee
 readonly lychee="lycheeverse/lychee:latest"
-
-require_docker() {
-    if (! docker stats --no-stream >/dev/null); then
-        echo "Docker is required for this check"
-        echo
-        exit 1
-    fi
-}
 
 lint_markdown() {
     echo
