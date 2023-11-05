@@ -24,7 +24,7 @@ require_docker() {
 check_license_on_files() {
     local extension="$1"
 
-    echo "→ Checking licenses for $files files"
+    echo "→ Checking licenses for $extension files"
 
     docker run --rm -v "${target_folder}:/src" "$image" \
         -c "Dotanuki Labs" \
@@ -40,7 +40,7 @@ report_missing_licenses() {
 }
 
 enforce_license_for_file_patterns() {
-    IFS=" " read -r -a files <<<"$(echo "$sources" | sed "s/,/ /g" | xargs)"
+    IFS=" " read -r -a files <<<"$(echo "$sources" | tr "," " " | xargs)"
 
     for type in "${files[@]}"; do
         check_license_on_files "$type" || report_missing_licenses
