@@ -21,3 +21,6 @@ jobs:
         uses: ./checks/licenses
         with:
           file-patterns: "*.sh"
+
+      - name: Component tests for Docs Linter
+        uses: ./checks/docs
