@@ -23,7 +23,11 @@ docker run --rm -v "$target_folder:/mnt" -w /mnt "$docker_shmft" --diff .
 echo
 
 echo "→ Checking code smells (shellcheck)"
-docker run --rm -v "$target_folder:/mnt" "$docker_shellcheck" sh -c "find /mnt -name '*.sh' | xargs shellcheck"
+
+readonly gradle_wrapper_exclusion="-not -path ./gradle/*"
+readonly find_with_execlusions="find /mnt -name '*.sh' $gradle_wrapper_exclusion"
+
+docker run --rm -v "$target_folder:/mnt" "$docker_shellcheck" sh -c "$find_with_execlusions | xargs shellcheck"
 
 echo
 echo "✅ All good!"
