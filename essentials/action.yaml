@@ -15,7 +15,7 @@ runs:
   using: "composite"
   steps:
       - name: Check typos everywhere
-        uses: crate-ci/typos@v1.18.0
+        uses: crate-ci/typos@v1.18.1
 
       - name: Lint documentation
         shell: bash
