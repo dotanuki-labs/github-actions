@@ -32,7 +32,7 @@
       "datasourceTemplate": "docker",
       "fileMatch": ["(^|/)bash-linter\\.sh$"],
       "matchStrings": [
-        "readonly\\s*shellcheck=\"koalaman/shellcheck:v(?<currentValue>\\d+\\.\\d+(\\.\\d+)?)\""
+        "readonly\\s*shellcheck=\"koalaman/shellcheck-alpine:v(?<currentValue>\\d+\\.\\d+(\\.\\d+)?)\""
       ]
     }
   ]
