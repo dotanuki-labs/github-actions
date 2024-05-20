@@ -34,6 +34,36 @@
       "matchStrings": [
         "readonly\\s*shellcheck=\"koalaman/shellcheck-alpine:v(?<currentValue>\\d+\\.\\d+(\\.\\d+)?)\""
       ]
+    },
+    {
+      "customType": "regex",
+      "depNameTemplate": "addlicense",
+      "packageNameTemplate": "google/addlicense",
+      "datasourceTemplate": "docker",
+      "fileMatch": ["(^|/)license-checker\\.sh$"],
+      "matchStrings": [
+        "readonly\\s*addlicense=\"ghcr.io/google/addlicense:v(?<currentValue>\\d+\\.\\d+(\\.\\d+)?)\""
+      ]
+    },
+    {
+      "customType": "regex",
+      "depNameTemplate": "markdownlint-cli",
+      "packageNameTemplate": "igorshubovych/markdownlint-cli",
+      "datasourceTemplate": "docker",
+      "fileMatch": ["(^|/)markdown-linter\\.sh$"],
+      "matchStrings": [
+        "readonly\\s*markdownlint=\"ghcr.io/igorshubovych/markdownlint-cli:v(?<currentValue>\\d+\\.\\d+(\\.\\d+)?)\""
+      ]
+    },
+    {
+      "customType": "regex",
+      "depNameTemplate": "lychee",
+      "packageNameTemplate": "lycheeverse/lychee",
+      "datasourceTemplate": "docker",
+      "fileMatch": ["(^|/)markdown-linter\\.sh$"],
+      "matchStrings": [
+        "readonly\\s*lychee=\"lycheeverse/lychee:(?<currentValue>\\d+\\.\\d+(\\.\\d+)?)\""
+      ]
     }
   ]
 }
