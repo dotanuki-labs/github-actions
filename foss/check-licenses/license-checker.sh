@@ -7,8 +7,8 @@
 
 set -eo pipefail
 
-# https://github.com/google/addlicense
-readonly addlicense="ghcr.io/google/addlicense"
+# https://github.com/google/addlicense/pkgs/container/addlicense
+readonly addlicense="ghcr.io/google/addlicense:v1.1.0"
 
 readonly target_folder="$1"
 readonly sources="$2"
