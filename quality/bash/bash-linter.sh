@@ -6,11 +6,11 @@
 
 set -eo pipefail
 
-# https://github.com/mvdan/sh
-readonly shmft="docker.io/mvdan/shfmt:latest"
+# https://hub.docker.com/r/mvdan/shfmt/tags
+readonly shmft="mvdan/shfmt:v3.8.0-alpine"
 
-#https://github.com/koalaman/shellcheck
-readonly shellcheck="docker.io/koalaman/shellcheck-alpine:stable"
+# https://hub.docker.com/r/koalaman/shellcheck-alpine/tags
+readonly shellcheck="koalaman/shellcheck-alpine:v0.10.0"
 
 readonly target_folder="$1"
 

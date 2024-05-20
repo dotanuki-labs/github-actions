@@ -8,11 +8,11 @@ set -eo pipefail
 
 readonly target_folder="$1"
 
-# https://github.com/igorshubovych/markdownlint-cli
-readonly markdownlint="ghcr.io/igorshubovych/markdownlint-cli:latest"
+# https://github.com/igorshubovych/markdownlint-cli/pkgs/container/markdownlint-cli
+readonly markdownlint="ghcr.io/igorshubovych/markdownlint-cli:v0.39.0"
 
-# https://github.com/lycheeverse/lychee
-readonly lychee="lycheeverse/lychee:latest"
+# https://hub.docker.com/r/lycheeverse/lychee/tags
+readonly lychee="lycheeverse/lychee:0.14.3-alpine"
 
 require_docker_daemon() {
     if (! docker stats --no-stream >/dev/null); then
