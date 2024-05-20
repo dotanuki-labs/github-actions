@@ -1,13 +1,10 @@
 #!/usr/bin/env bash
-# Copyright 2023 Dotanuki Labs
+# Copyright 2024 Dotanuki Labs
 # SPDX-License-Identifier: MIT
 
 # shellcheck disable=SC1091
 
 set -eo pipefail
-
-current_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-source "$current_dir/lib/preconditions.sh"
 
 # https://github.com/mvdan/sh
 readonly shmft="docker.io/mvdan/shfmt:latest"
@@ -16,6 +13,20 @@ readonly shmft="docker.io/mvdan/shfmt:latest"
 readonly shellcheck="docker.io/koalaman/shellcheck-alpine:stable"
 
 readonly target_folder="$1"
+
+require_docker_daemon() {
+    if (! docker stats --no-stream >/dev/null); then
+        echo "Docker is required for this execution"
+        echo
+        exit 1
+    fi
+}
+
+require_docker_image() {
+    local image_spec="$1"
+    echo "Pulling Docker image : $image_spec"
+    docker pull "$image_spec" >/dev/null 2>&1
+}
 
 check_code_style() {
     echo "→ Checking code formatting (shfmt)"

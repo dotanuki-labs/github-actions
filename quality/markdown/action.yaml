@@ -1,0 +1,9 @@
+name: "markdown-linter"
+description: "Check structure for markdown file and enforce valid links"
+
+runs:
+  using: "composite"
+  steps:
+    - name: Lint Markdown files
+      shell: bash
+      run: ${{ github.action_path }}/markdown-linter.sh $GITHUB_WORKSPACE
