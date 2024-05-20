@@ -1,9 +1,10 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
-    ":prHourlyLimit2",
-    "group:monorepos",
-    "workarounds:all"
+    "config:recommended",
+    "docker:pinDigests",
+    "helpers:pinGitHubActionDigests",
+    ":pinDevDependencies"
   ],
   "osvVulnerabilityAlerts": true,
   "dependencyDashboard": true,
@@ -13,7 +14,16 @@
       "automerge": false
     }
   ],
-  "enabledManagers": ["github-actions"],
-  "labels": ["dependencies", "github-actions"],
-  "github-actions": {}
+  "customManagers": [
+    {
+      "customType": "regex",
+      "depNameTemplate": "shfmt",
+      "packageNameTemplate": "rmvdan/shfmt",
+      "datasourceTemplate": "docker",
+      "fileMatch": ["(^|/)bash-linter\\.sh$"],
+      "matchStrings": [
+        "readonly\\s*shmft=\"mvdan/shfmt:v(?<currentValue>\\d+\\.\\d+(\\.\\d+)?)-alpine\""
+      ]
+    }
+  ]
 }
