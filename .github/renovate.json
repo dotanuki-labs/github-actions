@@ -18,7 +18,7 @@
     {
       "customType": "regex",
       "depNameTemplate": "shfmt",
-      "packageNameTemplate": "rmvdan/shfmt",
+      "packageNameTemplate": "mvdan/shfmt",
       "datasourceTemplate": "docker",
       "fileMatch": ["(^|/)bash-linter\\.sh$"],
       "matchStrings": [
