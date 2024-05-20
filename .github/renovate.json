@@ -22,7 +22,17 @@
       "datasourceTemplate": "docker",
       "fileMatch": ["(^|/)bash-linter\\.sh$"],
       "matchStrings": [
-        "readonly\\s*shmft=\"mvdan/shfmt:v(?<currentValue>\\d+\\.\\d+(\\.\\d+)?)-alpine\""
+        "readonly\\s*shmft=\"mvdan/shfmt:v(?<currentValue>\\d+\\.\\d+(\\.\\d+)?)\""
+      ]
+    },
+    {
+      "customType": "regex",
+      "depNameTemplate": "shellcheck",
+      "packageNameTemplate": "koalaman/shellcheck",
+      "datasourceTemplate": "docker",
+      "fileMatch": ["(^|/)bash-linter\\.sh$"],
+      "matchStrings": [
+        "readonly\\s*shellcheck=\"koalaman/shellcheck:v(?<currentValue>\\d+\\.\\d+(\\.\\d+)?)\""
       ]
     }
   ]
