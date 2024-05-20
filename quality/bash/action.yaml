@@ -1,0 +1,9 @@
+name: "bash-linter"
+description: "Lint all Bash scripts"
+
+runs:
+  using: "composite"
+  steps:
+    - name: Lint Bash Scripts
+      shell: bash
+      run: ${{ github.action_path }}/bash-linter.sh $GITHUB_WORKSPACE

@@ -7,14 +7,24 @@ on:
       - main
 
 jobs:
-  checks:
+  component-tests:
     runs-on: ubuntu-22.04
 
     steps:
-      - name: Checkout code
+      - name: Checkout source
         uses: actions/checkout@v4.1.6
 
-      - name: Component tests for essential checks
-        uses: ./essentials
+      - name: Check typos on source files and docs
+        uses: ./quality/typos
+
+      - name: Lint Bash scripts
+        uses: ./quality/bash
+
+      - name: Lint Markdown files
+        uses: ./quality/markdown
+
+      - name: Check MIT license on source files
+        uses: ./foss/check-licenses
         with:
           file-patterns: "*.sh"
+          license: "mit"
