@@ -40,6 +40,7 @@
       "depNameTemplate": "addlicense",
       "packageNameTemplate": "google/addlicense",
       "datasourceTemplate": "docker",
+      "registryUrlTemplate": "https://ghcr.io",
       "fileMatch": ["(^|/)license-checker\\.sh$"],
       "matchStrings": [
         "readonly\\s*addlicense=\"ghcr.io/google/addlicense:v(?<currentValue>\\d+\\.\\d+(\\.\\d+)?)\""
@@ -50,6 +51,7 @@
       "depNameTemplate": "markdownlint-cli",
       "packageNameTemplate": "igorshubovych/markdownlint-cli",
       "datasourceTemplate": "docker",
+      "registryUrlTemplate": "https://ghcr.io",
       "fileMatch": ["(^|/)markdown-linter\\.sh$"],
       "matchStrings": [
         "readonly\\s*markdownlint=\"ghcr.io/igorshubovych/markdownlint-cli:v(?<currentValue>\\d+\\.\\d+(\\.\\d+)?)\""
