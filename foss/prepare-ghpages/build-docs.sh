@@ -22,15 +22,14 @@ ensure_required_files() {
 }
 
 setup_vitepress() {
-    cp "$script_dir/vitepress/package.json" "$root_dir/docs/package.json"
-    cp "$script_dir/vitepress/package-lock.json" "$root_dir/docs/package-lock.json"
+    cp "$script_dir/vitepress/package.json" "$root_dir/package.json"
+    cp "$script_dir/vitepress/package-lock.json" "$root_dir/package-lock.json"
     mkdir -p "$root_dir/docs/.vitepress"
     cp "$script_dir/vitepress/config.mts" "$root_dir/docs/.vitepress/config.mts"
     mv "$root_dir/docs/readme.md" "$root_dir/docs/index.md"
 }
 
 build_docs() {
-    cd "$root_dir/docs"
     npm install
     npm run docs:build
 }
