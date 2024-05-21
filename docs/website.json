@@ -1,8 +1,6 @@
 {
-  "alias": "/github-actions/",
   "title": "Github Actions",
   "description": "Reusable CI/CD logic targeting pipelines on Github Actions ",
-  "github": "https://github.com/dotanuki-labs/github-actions",
   "sidebar": [
     {
       "text": "Reference",

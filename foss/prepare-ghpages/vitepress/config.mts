@@ -4,7 +4,7 @@ import website from "../website.json";
 const config = website as DataType;
 
 export default defineConfig({
-  base: config.alias,
+  base: "/<base-path>/",
   title: config.title,
   description: config.description,
   themeConfig: {
@@ -13,7 +13,7 @@ export default defineConfig({
     socialLinks: [
       {
         icon: "github",
-        link: config.github,
+        link: "https://github.com/dotanuki-labs/<repo>",
       },
     ],
   },
