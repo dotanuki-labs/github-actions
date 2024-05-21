@@ -2,6 +2,8 @@
 # Copyright 2024 Dotanuki Labs
 # SPDX-License-Identifier: MIT
 
+# shellcheck disable=SC2001
+
 set -eou pipefail
 
 readonly root_dir="$1"
@@ -26,6 +28,12 @@ setup_vitepress() {
     cp "$script_dir/vitepress/package-lock.json" "$root_dir/package-lock.json"
     mkdir -p "$root_dir/docs/.vitepress"
     cp "$script_dir/vitepress/config.mts" "$root_dir/docs/.vitepress/config.mts"
+
+    local repo_name
+    repo_name=$(echo "$GITHUB_REPOSITORY" | sed "s/dotanuki-labs\///g")
+    perl -pi -e "s/<base-path>/$repo_name/g" "$root_dir/docs/.vitepress/config.mts"
+    perl -pi -e "s/<repo>/$repo_name/g" "$root_dir/docs/.vitepress/config.mts"
+
     mv "$root_dir/docs/readme.md" "$root_dir/docs/index.md"
 }
 
