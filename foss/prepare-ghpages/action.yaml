@@ -1,0 +1,22 @@
+name: "prepare-ghpages"
+description: "Prepare static assets compatible with Github Pages"
+
+runs:
+  using: "composite"
+  steps:
+    - name: Setup NodeJS
+      uses: actions/setup-node@v4.0.2
+      with:
+        node-version: 22
+
+    - name: Build docs with Vitepress
+      shell: bash
+      run: ${{ github.action_path }}/build-docs.sh $GITHUB_WORKSPACE
+
+    - name: Configure Github Pages
+      uses: actions/configure-pages@v5.0.0
+
+    - name: Upload assets Github Pages assets
+      uses: actions/upload-pages-artifact@v3.0.1
+      with:
+        path: docs/.vitepress/dist
