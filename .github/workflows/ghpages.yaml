@@ -1,0 +1,29 @@
+name: "Deploy docs to Github Pages"
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  build-deploy-docs:
+    runs-on: ubuntu-22.04
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@a5ac7e51b41094c92402da3b24376905380afc29 # v4.1.6
+
+      - name: Prepare documentation assets
+        uses: ./foss/prepare-ghpages
+
+      - name: Deploy assets to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4.0.5

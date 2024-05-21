@@ -6,6 +6,13 @@ on:
     branches:
       - main
 
+permissions:
+  contents: read
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
 jobs:
   component-tests:
     runs-on: ubuntu-22.04
@@ -28,3 +35,6 @@ jobs:
         with:
           file-patterns: "*.sh"
           license: "mit"
+
+      - name: Prepare documentation assets
+        uses: ./foss/prepare-ghpages
