@@ -5,4 +5,4 @@ runs:
   using: "composite"
   steps:
     - name: Check typos everywhere
-      uses: crate-ci/typos@acbff432fb0e7c8cbb9f032311d8f13927dbaaf3 # v1.22.4
+      uses: crate-ci/typos@dde47868a506acfe1117a6ea9621271439d8c89b # v1.22.8
