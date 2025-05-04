@@ -6,4 +6,4 @@ runs:
   steps:
     - name: Lint Markdown files
       shell: bash
-      run: ${{ github.action_path }}/markdown-linter.sh $GITHUB_WORKSPACE
+      run: ${{ github.action_path }}/markdown-linter.sh $GITHUB_WORKSPACE $GITHUB_TOKEN

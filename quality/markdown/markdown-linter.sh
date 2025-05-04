@@ -6,7 +6,8 @@
 
 set -eo pipefail
 
-readonly target_folder="$1"
+readonly folder="$1"
+readonly gh_token="$2"
 
 # https://github.com/igorshubovych/markdownlint-cli/pkgs/container/markdownlint-cli
 readonly markdownlint="ghcr.io/igorshubovych/markdownlint-cli:v0.44.0"
@@ -31,13 +32,13 @@ require_docker_image() {
 lint_markdown() {
     echo
     echo "→ Linting markdown files (markdownlint)"
-    docker run --rm -v "$target_folder:/workdir" "$markdownlint" "**/*.md"
+    docker run --rm -v "$folder:/workdir" "$markdownlint" "**/*.md"
 }
 
 check_broken_links() {
     echo
     echo "→ Checking broken links (lychee)"
-    docker run --rm -w /input -v "$target_folder:/input" "$lychee" "**/*.md"
+    docker run --rm -w /input -v "$folder:/input" "$lychee" "**/*.md" --github-token "$gh_token"
 }
 
 echo
