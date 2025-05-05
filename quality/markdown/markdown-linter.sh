@@ -47,10 +47,11 @@ echo
 
 require_docker_daemon
 require_docker_image "$markdownlint"
-require_docker_image "$lychee"
-
 lint_markdown
-check_broken_links
+
+# Disables this check for now due to aggressive GitHub rate limiting
+# require_docker_image "$lychee"
+# check_broken_links
 
 echo
 echo "✅ All good!"
