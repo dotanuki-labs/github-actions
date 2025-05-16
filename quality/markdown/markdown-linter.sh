@@ -7,7 +7,6 @@
 set -eo pipefail
 
 readonly folder="$1"
-readonly gh_token="$2"
 
 # https://github.com/igorshubovych/markdownlint-cli/pkgs/container/markdownlint-cli
 readonly markdownlint="ghcr.io/igorshubovych/markdownlint-cli:v0.44.0"
@@ -38,7 +37,7 @@ lint_markdown() {
 check_broken_links() {
     echo
     echo "→ Checking broken links (lychee)"
-    docker run --rm -w /input -v "$folder:/input" "$lychee" "**/*.md" --github-token "$gh_token"
+    docker run --rm -w /input -v "$folder:/input" "$lychee" "**/*.md" --exclude "github\.com"
 }
 
 echo
@@ -49,9 +48,8 @@ require_docker_daemon
 require_docker_image "$markdownlint"
 lint_markdown
 
-# Disables this check for now due to aggressive GitHub rate limiting
-# require_docker_image "$lychee"
-# check_broken_links
+require_docker_image "$lychee"
+check_broken_links
 
 echo
 echo "✅ All good!"
