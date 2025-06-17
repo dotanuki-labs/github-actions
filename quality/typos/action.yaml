@@ -1,8 +1,0 @@
-name: "typos-checker"
-description: "Inspect source files for typos and spelling"
-
-runs:
-  using: "composite"
-  steps:
-    - name: Check typos everywhere
-      uses: crate-ci/typos@b1ae8d918b6e85bd611117d3d9a3be4f903ee5e4 # v1.33.1

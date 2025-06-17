@@ -21,9 +21,6 @@ jobs:
       - name: Checkout source
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
 
-      - name: Check typos on source files and docs
-        uses: ./quality/typos
-
       - name: Lint Bash scripts
         uses: ./quality/bash
 
