@@ -10,7 +10,7 @@ set -eo pipefail
 readonly shmft="mvdan/shfmt:v3.12.0"
 
 # https://hub.docker.com/r/koalaman/shellcheck-alpine/tags
-readonly shellcheck="koalaman/shellcheck-alpine:v0.10.0"
+readonly shellcheck="koalaman/shellcheck-alpine:v0.11.0"
 
 readonly target_folder="$1"
 
