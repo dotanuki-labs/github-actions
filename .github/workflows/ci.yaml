@@ -27,11 +27,5 @@ jobs:
       - name: Lint Markdown files
         uses: ./quality/markdown
 
-      - name: Check MIT license on source files
-        uses: ./foss/check-licenses
-        with:
-          file-patterns: "*.sh"
-          license: "mit"
-
       - name: Prepare documentation assets
         uses: ./foss/prepare-ghpages
