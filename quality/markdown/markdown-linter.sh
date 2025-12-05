@@ -12,7 +12,7 @@ readonly folder="$1"
 readonly markdownlint="ghcr.io/igorshubovych/markdownlint-cli:v0.46.0"
 
 # https://hub.docker.com/r/lycheeverse/lychee/tags
-readonly lychee="lycheeverse/lychee:0.15.1"
+readonly lychee="lycheeverse/lychee:0.22.0"
 
 require_docker_daemon() {
     if (! docker stats --no-stream >/dev/null); then
