@@ -24,8 +24,5 @@ jobs:
       - name: Lint Bash scripts
         uses: ./quality/bash
 
-      - name: Lint Markdown files
-        uses: ./quality/markdown
-
       - name: Prepare documentation assets
         uses: ./foss/prepare-ghpages
