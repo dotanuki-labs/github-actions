@@ -9,7 +9,7 @@ set -eo pipefail
 readonly folder="$1"
 
 # https://github.com/igorshubovych/markdownlint-cli/pkgs/container/markdownlint-cli
-readonly markdownlint="ghcr.io/igorshubovych/markdownlint-cli:v0.46.0"
+readonly markdownlint="ghcr.io/igorshubovych/markdownlint-cli:v0.47.0"
 
 # https://hub.docker.com/r/lycheeverse/lychee/tags
 readonly lychee="lycheeverse/lychee:0.22.0"
