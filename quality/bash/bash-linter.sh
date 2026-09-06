@@ -7,7 +7,7 @@
 set -eo pipefail
 
 # https://hub.docker.com/r/mvdan/shfmt/tags
-readonly shmft="mvdan/shfmt:v3.14.0"
+readonly shmft="mvdan/shfmt:v3.14.1"
 
 # https://hub.docker.com/r/koalaman/shellcheck-alpine/tags
 readonly shellcheck="koalaman/shellcheck-alpine:v0.11.0"
